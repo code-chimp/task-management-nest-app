@@ -1,4 +1,4 @@
-GET http://localhost:3001/api/tasks
+GET http://localhost:3001/api/tasks?search=BUBBa
 Accept: application/json
 
 ###
@@ -6,24 +6,23 @@ POST http://localhost:3001/api/tasks
 Content-Type: application/json
 
 {
-  "title": "do that voodoo",
-  "description": "that you do so well"
+  "title": "task 1",
+  "description": "new and improved task numero uno"
 }
 
 ###
-GET http://localhost:3001/api/tasks/a57a9c17-e849-480e-8b09-766e98502f8b
+GET http://localhost:3001/api/tasks/cbb4bf30-fe5c-4e1c-a100-6159a4b11831
 Accept: application/json
 
 ###
-DELETE http://localhost:3001/api/tasks/868dd504-8713-4076-a77f-dff57b3ab8f4
+DELETE http://localhost:3001/api/tasks/d63839fb-889a-45af-9ba4-82ba23ab8a80
 
 ###
-PUT http://localhost:3001/api/tasks/d16eca51-09f8-4e8b-8218-7499d5fea078
+PUT http://localhost:3001/api/tasks/cbb4bf30-fe5c-4e1c-a100-6159a4b11831
 Content-Type: application/json
 
 {
-  "id": "d16eca51-09f8-4e8b-8218-7499d5fea078",
-  "title": "do that voodoo",
-  "description": "that you do so well",
+  "id": "cbb4bf30-fe5c-4e1c-a100-6159a4b11831",
+  "title": "task 3, bubba",
   "status": "IN_PROGRESS"
 }

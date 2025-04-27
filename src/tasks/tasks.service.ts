@@ -1,35 +1,48 @@
-import { Injectable } from '@nestjs/common';
-import { Task } from './models/task.model';
-import { CrudService } from '../common/services/crud.service';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { FilteredTasksDto } from './dto/filtered-tasks.dto';
+import { TasksRepository } from './repositories/tasks.repository';
+import { InjectRepository } from '@nestjs/typeorm';
+import { TaskEntity } from './dao/task.entity';
+import { CreateTaskDto } from './dto/create-task.dto';
+import { DeleteResult } from 'typeorm';
 
-/**
- * Service for managing tasks, extending the generic CRUD service.
- * Provides additional functionality for filtering tasks based on specific criteria.
- */
 @Injectable()
-export class TasksService extends CrudService<Task> {
-  /**
-   * Retrieves tasks filtered by status and/or search criteria.
-   * @param {FilteredTasksDto} filter - The filter criteria containing status and search text.
-   * @returns {Task[]} An array of tasks matching the filter criteria.
-   */
-  getFilteredTasks(filter: FilteredTasksDto): Task[] {
-    const { status, search } = filter;
-    let tasks = this.getAll();
+export class TasksService {
+  constructor(@InjectRepository(TasksRepository) private tasksRepository: TasksRepository) {}
 
-    if (status) {
-      tasks = tasks.filter(task => task.status === status);
+  async getAll(filter: FilteredTasksDto): Promise<TaskEntity[]> {
+    return await this.tasksRepository.getTasks(filter);
+  }
+
+  async get(id: string): Promise<TaskEntity> {
+    const entity = await this.tasksRepository.findOne({ where: { id } });
+
+    if (!entity) {
+      throw new NotFoundException(`Task with ID "${id}" not found`);
     }
 
-    if (search) {
-      tasks = tasks.filter(
-        task =>
-          task.title.toLowerCase().includes(search.toLowerCase()) ||
-          task.description.toLowerCase().includes(search.toLowerCase()),
-      );
+    return entity;
+  }
+
+  create(dto: CreateTaskDto): Promise<TaskEntity> {
+    return this.tasksRepository.createTask(dto);
+  }
+
+  async update(id: string, updated: TaskEntity): Promise<TaskEntity> {
+    const task = await this.get(id);
+    return await this.tasksRepository.save({
+      ...task,
+      ...updated,
+    });
+  }
+
+  async delete(id: string): Promise<DeleteResult> {
+    const result = await this.tasksRepository.delete(id);
+
+    if (result.affected === 0) {
+      throw new NotFoundException(`Task with ID "${id}" not found`);
     }
 
-    return tasks;
+    return result;
   }
 }

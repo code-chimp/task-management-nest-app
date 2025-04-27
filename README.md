@@ -20,3 +20,4 @@ A simple task management application built with NestJS. This project serves as a
    ```bash
    git clone https://github.com/code-chimp/task-management-nest-app.git
    cd task-management-nest-app
+   ```
