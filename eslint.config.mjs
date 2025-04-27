@@ -26,9 +26,21 @@ export default tseslint.config(
   },
   {
     rules: {
+      '@typescript-eslint/array-type': ['warn', { default: 'array' }],
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/no-unsafe-argument': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { vars: 'local', args: 'after-used', argsIgnorePattern: '_' },
+      ],
+      'no-console': [
+        'error',
+        {
+          allow: ['error', 'info', 'warn'],
+        },
+      ],
+      'no-magic-numbers': ['error', { ignore: [-1, 0, 1, 2, 10, 100, 1000] }],
     },
   },
 );

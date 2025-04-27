@@ -1,5 +1,6 @@
-GET http://localhost:3001/api/tasks?search=BUBBa
+GET http://localhost:3001/api/tasks
 Accept: application/json
+Authorization: Bearer {{ auth_token }}
 
 ###
 POST http://localhost:3001/api/tasks
@@ -9,6 +10,34 @@ Content-Type: application/json
   "title": "task 1",
   "description": "new and improved task numero uno"
 }
+
+###
+POST http://localhost:3001/auth/register
+Content-Type: application/json
+
+{
+  "username": "schrek",
+  "password": "Hey-now-you're-an-4ll-star"
+}
+
+###
+POST http://localhost:3001/auth/register
+Content-Type: application/json
+
+{
+  "username": "hodor",
+  "password": "H0ld-Th3'D00r"
+}
+
+###
+POST http://localhost:3001/auth/signin
+Content-Type: application/json
+
+{
+  "username": "schrek",
+  "password": "Hey-now-you're-an-4ll-star"
+}
+> {% client.global.set("auth_token", response.body.accessToken); %}
 
 ###
 GET http://localhost:3001/api/tasks/cbb4bf30-fe5c-4e1c-a100-6159a4b11831
