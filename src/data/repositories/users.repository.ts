@@ -2,7 +2,7 @@ import { ConflictException, Injectable, InternalServerErrorException } from '@ne
 import * as bcrypt from 'bcrypt';
 import { DataSource, QueryFailedError, Repository } from 'typeorm';
 import { POSTGRES_CONFLICT_ERROR } from '../../constants';
-import { AuthCredentialsDto } from '../dto/auth-credentials.dto';
+import { AuthCredentialsDto } from '../../auth/dto/auth-credentials.dto';
 import { UserEntity } from '../dao/user.entity';
 
 @Injectable()
