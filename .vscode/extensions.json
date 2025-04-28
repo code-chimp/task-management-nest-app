@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "christian-kohler.npm-intellisense", // NPM Intellisense for autocompleting npm modules
+    "dbaeumer.vscode-eslint", // ESLint for linting TypeScript code
+    "editorconfig.editorconfig", // EditorConfig for consistent coding styles
+    "esbenp.prettier-vscode", // Prettier for code formatting
+    "ms-vscode.vscode-typescript-next", // TypeScript support
+    "nestjs.nestjs-files", // NestJS snippets and file generation
+    "streetsidesoftware.code-spell-checker", // Spell checker for comments and documentation
+    "yoavbls.pretty-ts-errors" // Pretty TypeScript errors
+  ]
+}

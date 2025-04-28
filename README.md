@@ -14,10 +14,15 @@ A simple task management application built with NestJS. This project serves as a
 - **Node.js** v22.14.0 (managed with [Volta](https://volta.sh) or [nvm](https://github.com/nvm-sh/nvm))
 - **npm** (comes with Node.js)
 
-## Installation
+---
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/code-chimp/task-management-nest-app.git
-   cd task-management-nest-app
-   ```
+## Additional Resources
+- [Quick Start Guide](docs/quick-start.md): Step-by-step setup instructions
+- [Project Structure](docs/project-structure.md): Overview of the folder and file organization
+- [Development Guide](docs/development-guide.md): In-depth development workflow and best practices
+
+---
+
+## License
+
+This project is under the [0BSD license](LICENSE).

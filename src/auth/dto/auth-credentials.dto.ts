@@ -10,6 +10,11 @@ const passwordRegex = /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
 const passwordErrorMessage =
   'Password must contain at least one uppercase letter, one lowercase letter, and one number or special character.';
 
+/**
+ * DTO for user authentication credentials.
+ * - username: The user's unique username (validated for length and type)
+ * - password: The user's password (validated for length, type, and complexity)
+ */
 export class AuthCredentialsDto {
   @IsString()
   @MaxLength(USERNAME_MAX_LENGTH)

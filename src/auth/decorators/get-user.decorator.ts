@@ -7,3 +7,8 @@ export const GetUser = createParamDecorator(
     return req.user;
   },
 );
+
+/**
+ * Custom decorator to extract the authenticated user from the request object.
+ * Returns the UserEntity if present, otherwise undefined.
+ */

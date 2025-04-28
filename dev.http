@@ -37,7 +37,7 @@ Authorization: Bearer {{ auth_token }}
 }
 
 ### Get the tasks for the current user
-GET http://localhost:3001/api/tasks?status=OPEN
+GET http://localhost:3001/api/tasks
 Accept: application/json
 Authorization: Bearer {{ auth_token }}
 
